@@ -21,17 +21,26 @@
       // })
 
       // Reactivity
-      Object.defineProperty(viewModel, 'str', {
-        // 속성에 접근했을 때의 동작을 정의
-        get: function () {
-          console.log('접근');
-        },
-        // 속성에 값을 할당했을 때의 동작을 정의
-        set: function (newValue) {
-          console.log('할당', newValue);
-          div.innerHTML = newValue; // 속성의 값이 바뀔 때마다 브라우저의 값도 바뀜
-        },
-      });
+      (function () {
+        function init() {
+          Object.defineProperty(viewModel, 'str', {
+            // 속성에 접근했을 때의 동작을 정의
+            get: function () {
+              console.log('접근');
+            },
+            // 속성에 값을 할당했을 때의 동작을 정의
+            set: function (newValue) {
+              console.log('할당', newValue);
+              render(newValue);
+            },
+          });
+        }
+        function render(vlaue) {
+          div.innerHTML = vlaue; // 속성의 값이 바뀔 때마다 브라우저의 값도 바뀜
+        }
+
+        init();
+      })();
     </script>
   </body>
 </html>
