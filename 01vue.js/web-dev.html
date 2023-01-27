@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      var div = document.querySelector('#app'); // #app의 정보를 div에 저장
+      var str = 'Hello World'; // 'Hello world' 문자열을 str에 저장
+      div.innerHTML = str; // div 정보뭉치에 있는 innerHTML에 접근하여 str을 저장
+
+      str = 'Hello World!';
+      div.innerHTML = str; // 브라우저에 변경된 str으로 업데이트하고 싶다면 div의 innerHTML에 str을 재할당
+    </script>
+  </body>
+</html>
