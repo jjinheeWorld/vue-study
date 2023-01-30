@@ -11,20 +11,29 @@
     <div id="app">
       <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름"></app-header> -->
       <app-header v-bind:propsdata="message"></app-header>
+      <app-content v-bind:propsdata="num"></app-content>
+    </div>
     </div>
     <script>
       var appHeader = {
         template: '<h1>{{ propsdata }}</h1>',
         props: ['propsdata'],
       };
+      var appContent = {
+        template: '<div>{{ propsdata }}</div>',
+        // 뷰 컴포넌트는 각각 고유한 데이터 유효 범위를 갖기 때문에 appHeader의 프롭스 내용과 구분된다. 그래서 프롭스 속성 이름이 같아도 무방하다.
+        props: ['propsdata']
+      }
 
       new Vue({
         el: '#app',
         components: {
           'app-header': appHeader,
+          'app-content': appContent,
         },
         data: {
           message: 'hi',
+          num: 10
         },
       });
     </script>
