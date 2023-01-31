@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"></app-header> -->
+      <app-header v-on:pass="logText"></app-header>
+    </div>
+    <script>
+      // 이벤트 발생은 컴포넌트의 통신 방법 중 하위 컴포넌트에서 상위 컴포넌트로 통신하는 방식
+      var appHeader = {
+        template: '<button v-on:click="passEvent">click me</button>',
+        // 하위 컴포넌트의 메서드나 라이프 사이클 훅과 같은 곳에 아래와 같이 코드를 추가
+        methods: {
+          passEvent: function () {
+            // 하위 컴포넌트의 내용
+            this.$emit('pass');
+          },
+        },
+      };
+
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader,
+        },
+        methods: {
+          logText: function () {
+            console.log('hi');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
